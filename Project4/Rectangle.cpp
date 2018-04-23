@@ -10,6 +10,9 @@ Rectangle::Rectangle(double xa, double ya, double xb, double yb, double xc, doub
 
 Rectangle::Rectangle(double xCenter, double yCenter, double sideA, double sideB)
 {
+	this->sideA = sideA;
+	this->sideB = sideB;
+	center.setXY(xCenter, yCenter);
 	a.getX() = xCenter - sideA / 2;
 	a.getY ()= yCenter - sideB / 2;
 
@@ -22,7 +25,9 @@ Rectangle::Rectangle(double xCenter, double yCenter, double sideA, double sideB)
 	d.getX() = xCenter + sideA / 2;
 	d.getY() = yCenter - sideB / 2;
 
-}
+	center.getX() = xCenter;
+	center.getY() = yCenter;
+	}
 
 void Rectangle::move(char direction, double value) {
 	if (direction == 'x' || direction == 'X')
@@ -44,8 +49,11 @@ void Rectangle::move(char direction, double value) {
 	}
 }
 
-void Rectangle::coordinates(double xCenter, double yCenter, double sideA, double sideB)
+void Rectangle::coordinates(double xCenter, double yCenter, double &sideA, double &sideB)
 {
+	this->sideA = sideA;
+	this->sideB = sideB;
+	center.setXY(xCenter, yCenter);
 	a.getX() = xCenter - sideA / 2;
 	a.getY() = yCenter - sideB / 2;
 
@@ -57,11 +65,21 @@ void Rectangle::coordinates(double xCenter, double yCenter, double sideA, double
 
 	d.getX() = xCenter + sideA / 2;
 	d.getY() = yCenter - sideB / 2;
-
 }
 
 void Rectangle::resize(double valueX, double valueY) {
 	sideA += valueX;
 	sideB += valueY;
+	std::cout << center.getX() << "\t" << center.getY() << std::endl;
 	coordinates(center.getX(), center.getY(), sideA, sideB);
+}
+
+double Rectangle::area() {
+	return (this->sideA*this->sideB);
+}
+
+bool Rectangle::compare(Rectangle obj) {
+	if ((this->area() == obj.area()) && (this->sideA == obj.sideA || this->sideA == obj.sideB))
+		return true;
+	else return false;
 }

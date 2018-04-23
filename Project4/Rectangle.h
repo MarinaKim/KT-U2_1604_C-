@@ -39,6 +39,9 @@ public:
 	double getYD() { return d.getY(); }
 	//methods
 	void move(char direction, double value);
-	void coordinates(double xCenter, double yCenter, double sideA, double sideB);
+	void coordinates(double xCenter, double yCenter, double &sideA, double &sideB);
 	void resize(double valueX, double valueY);
+    double area();
+	bool compare(Rectangle obj);
 };
+	

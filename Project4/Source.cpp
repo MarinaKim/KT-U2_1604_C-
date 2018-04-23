@@ -134,18 +134,52 @@ int main()
 		{
 			while (!in.eof()) {
 				in >> xCenter >> yCenter >> sideA>> sideB;
-				Rectangle R(xCenter, yCenter, sideA, sideB);
-				p[i++] = R;
+				Rectangle R(xCenter, yCenter, sideA, sideB); //записывает в буфферную переменную
+				p[i++] = R; // записывает в массив
 			}
+			
 		}
-		/*for (int k = 0;k < i;k++) {*/
-			p[0].resize(2, 5);
-			out << p[k].getXA() << "\t" << p[k].getYA() << "\t" << p[k].getXB() << "\t" << p[k].getYB() << "\t" <<
-				p[k].getXC() << "\t" << p[k].getYC() << "\t" << p[k].getXD() << "\t" << p[k].getYD() << endl;
-		}
+		/*for (int k = 0;k < i;k++) {
+			p[k].resize(2, 5);*/
+		p[0].resize(2, 5);
+		out << p[k].getXA() << "\t" << p[k].getYA() << "\t" << p[k].getXB() << "\t" << p[k].getYB() << "\t" <<
+			p[k].getXC() << "\t" << p[k].getYC() << "\t" << p[k].getXD() << "\t" << p[k].getYD() << endl;
+	/*}*/
 		out.close();
 		system("pause");
 	}break;
+
+		case 6:{
+			ifstream in;
+			ofstream out;
+			out.open("write.txt", ios::out); // для вывода, файл если создан, то перезаписывается
+											 /*out.open("write.txt", ios::app); //если файл существет, пишется дальше*/
+			in.open("Read1.txt");
+			Rectangle *p;
+			p = new Rectangle[4];
+			double xa, ya, xb, yb, xc, yc, xd, yd;
+			double xCenter, yCenter, sideA, sideB;
+			int i = 0;
+
+			if (!in) {
+				cerr << "file open erros" << endl;
+			}
+			else
+			{
+				while (!in.eof()) {
+					in >> xCenter >> yCenter >> sideA >> sideB;
+					Rectangle R(xCenter, yCenter, sideA, sideB); //записывает в буфферную переменную
+					p[i++] = R; // записывает в массив
+				}}
+			/*for (int k = 0;k < i;k++) {
+			p[k].resize(2, 5);*/
+			p[0].resize(2, 5);
+			out << p[k].getXA() << "\t" << p[k].getYA() << "\t" << p[k].getXB() << "\t" << p[k].getYB() << "\t" <<
+				p[k].getXC() << "\t" << p[k].getYC() << "\t" << p[k].getXD() << "\t" << p[k].getYD() << endl;
+			/*}*/
+			out.close();
+			system("pause");
+		}break;
 		system("pause");
 		return 0;
 	}
